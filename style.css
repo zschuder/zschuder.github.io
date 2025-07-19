@@ -1,22 +1,399 @@
 /*
-    This is your main CSS file (style.css).
-    It contains custom styles for your website.
+    Custom Styles for Zack's Personal Portfolio
+    This file replicates the visual style of the original Tailwind CSS design
+    using standard CSS properties, removing the need for the Tailwind CDN.
 */
 
-/* Set the default font to Inter for the entire body */
+/* --- Base Styles --- */
 body {
-    font-family: 'Inter', sans-serif;
-    /* Smooth scrolling for anchor links when clicking navigation items */
-    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif; /* Sets the default font */
+    scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
+    background-color: #f9fafb; /* Equivalent to bg-gray-50 */
+    color: #1f2937; /* Equivalent to text-gray-800 */
 }
 
-/*
-    Basic styling for sections to ensure they take full width and have padding.
-    'max-width' keeps content readable on very large screens.
-    'margin: 0 auto;' horizontally centers the section content.
-*/
-section {
-    padding: 4rem 1rem; /* Vertical padding (top/bottom), horizontal padding (left/right) */
-    max-width: 1200px; /* Maximum width for the content inside sections */
-    margin: 0 auto; /* Centers the section horizontally on the page */
+/* Styles for all main content sections */
+.section-container {
+    padding-left: 1rem; /* Equivalent to px-4 */
+    padding-right: 1rem; /* Equivalent to px-4 */
+    max-width: 1200px; /* Max width for content readability */
+    margin-left: auto; /* Equivalent to mx-auto */
+    margin-right: auto; /* Equivalent to mx-auto */
+}
+
+/* --- Navigation Bar --- */
+.header {
+    background-color: #fff; /* Equivalent to bg-white */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Equivalent to shadow-md */
+    padding-top: 1rem; /* Equivalent to py-4 */
+    padding-bottom: 1rem; /* Equivalent to py-4 */
+    position: sticky; /* Equivalent to sticky */
+    top: 0; /* Equivalent to top-0 */
+    z-index: 50; /* Equivalent to z-50 */
+}
+
+.navbar-content {
+    display: flex; /* Equivalent to flex */
+    justify-content: space-between; /* Equivalent to justify-between */
+    align-items: center; /* Equivalent to items-center */
+    /* .section-container handles padding and max-width for this */
+}
+
+.logo {
+    font-size: 1.5rem; /* Equivalent to text-2xl */
+    font-weight: 700; /* Equivalent to font-bold */
+    color: #4f46e5; /* Equivalent to text-indigo-600 */
+    transition: color 0.3s ease-in-out; /* Equivalent to transition duration-300 */
+    text-decoration: none; /* REMOVED UNDERLINE from logo */
+}
+
+.logo:hover {
+    color: #3730a3; /* Equivalent to hover:text-indigo-800 */
+}
+
+.nav-links {
+    display: flex; /* Equivalent to flex */
+    gap: 1.5rem; /* Equivalent to space-x-6 */
+    list-style: none; /* REMOVED LIST DOTS */
+    padding: 0; /* Remove default padding from ul */
+    margin: 0; /* Remove default margin from ul */
+}
+
+.nav-link {
+    color: #4b5563; /* Equivalent to text-gray-600 */
+    transition: color 0.3s ease-in-out; /* Equivalent to transition duration-300 */
+    font-weight: 500; /* Equivalent to font-medium */
+    text-decoration: none; /* REMOVED UNDERLINE */
+    font-family: 'Inter', sans-serif; /* Explicitly set font to ensure consistency */
+}
+
+.nav-link:hover {
+    color: #4f46e5; /* Equivalent to hover:text-indigo-600 */
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    background: linear-gradient(to right, #6366f1, #9333ea); /* Equivalent to bg-gradient-to-r from-indigo-500 to-purple-600 */
+    color: #fff; /* Equivalent to text-white */
+    text-align: center; /* Equivalent to text-center */
+    padding-top: 5rem; /* Equivalent to py-20 */
+    padding-bottom: 5rem; /* Equivalent to py-20 */
+    border-bottom-left-radius: 0.5rem; /* Equivalent to rounded-b-lg */
+    border-bottom-right-radius: 0.5rem; /* Equivalent to rounded-b-lg */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-lg */
+}
+
+.hero-title {
+    font-size: 3rem; /* Equivalent to text-5xl */
+    font-weight: 800; /* Equivalent to font-extrabold */
+    margin-bottom: 1rem; /* Equivalent to mb-4 */
+    line-height: 1.25; /* Equivalent to leading-tight */
+}
+
+.hero-title .highlight {
+    color: #fde047; /* Equivalent to text-yellow-300 */
+}
+
+.hero-subtitle {
+    font-size: 1.25rem; /* Equivalent to text-xl */
+    margin-bottom: 2rem; /* Equivalent to mb-8 */
+    opacity: 0.9; /* Equivalent to opacity-90 */
+}
+
+.hero-button {
+    background-color: #fff; /* Equivalent to bg-white */
+    color: #4f46e5; /* Equivalent to text-indigo-600 */
+    padding: 0.75rem 2rem; /* Equivalent to px-8 py-3 */
+    border-radius: 9999px; /* Equivalent to rounded-full */
+    font-size: 1.125rem; /* Equivalent to text-lg */
+    font-weight: 600; /* Equivalent to font-semibold */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-lg */
+    transition: all 0.3s ease-in-out; /* Equivalent to transition duration-300 */
+    transform: scale(1); /* Initial state for transform hover effect */
+    display: inline-block; /* Buttons are inline by default, but this ensures block-level properties like padding work */
+    text-decoration: none; /* REMOVED UNDERLINE from hero button */
+}
+
+.hero-button:hover {
+    background-color: #e0e7ff; /* Equivalent to hover:bg-indigo-100 */
+    transform: scale(1.05); /* Equivalent to hover:scale-105 */
+}
+
+/* --- About Me Section --- */
+.about-section {
+    background-color: #fff; /* Equivalent to bg-white */
+    padding-top: 4rem; /* Equivalent to py-16 */
+    padding-bottom: 4rem; /* Equivalent to py-16 */
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Equivalent to shadow-sm */
+    margin-top: 2rem; /* Equivalent to my-8 */
+    margin-bottom: 2rem; /* Equivalent to my-8 */
+}
+
+.about-heading {
+    font-size: 2.25rem; /* Equivalent to text-4xl */
+    font-weight: 700; /* Equivalent to font-bold */
+    text-align: center; /* Equivalent to text-center */
+    color: #1f2937; /* Equivalent to text-gray-800 */
+    margin-bottom: 3rem; /* Equivalent to mb-12 */
+}
+
+.about-content-wrapper {
+    display: flex; /* Equivalent to flex */
+    flex-direction: column; /* Equivalent to flex-col */
+    align-items: center; /* Equivalent to items-center */
+    gap: 2rem; /* Equivalent to space-y-8 */
+}
+
+.profile-image-container {
+    margin-bottom: 0; /* Equivalent to mb-0 */
+}
+
+.profile-image {
+    width: 25rem; /* Equivalent to w-48 (48 * 4px = 192px) */
+    height: 16rem; /* Equivalent to h-48 (48 * 4px = 192px) */
+    border-radius: 9999px; /* Equivalent to rounded-full */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-lg */
+    border: 4px solid #e0e7ff; /* Equivalent to border-4 border-indigo-200 */
+    object-fit: cover; /* Ensures the image covers the area, cropping if needed */
+    object-position: center; /* Centers the image content within the frame */
+}
+
+.bio-text-container {
+    font-size: 1.125rem; /* Equivalent to text-lg */
+    line-height: 1.625; /* Equivalent to leading-relaxed */
+    color: #374151; /* Equivalent to text-gray-700 */
+    text-align: justify; /* Equivalent to text-justify */
+    max-width: 36rem; /* Equivalent to max-w-xl */
+    margin-left: auto; /* Equivalent to mx-auto */
+    margin-right: auto; /* Equivalent to mx-auto */
+}
+
+.bio-text-container .highlight {
+    font-weight: 600; /* Equivalent to font-semibold */
+    color: #4f46e5; /* Equivalent to text-indigo-600 */
+}
+
+.bio-paragraph {
+    margin-bottom: 1rem; /* Equivalent to mb-4 */
+}
+
+/* --- Projects Section --- */
+.projects-section {
+    background-color: #f3f4f6; /* Equivalent to bg-gray-100 */
+    padding-top: 4rem; /* Equivalent to py-16 */
+    padding-bottom: 4rem; /* Equivalent to py-16 */
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Equivalent to shadow-sm */
+    margin-top: 2rem; /* Equivalent to my-8 */
+    margin-bottom: 2rem; /* Equivalent to my-8 */
+}
+
+.projects-heading {
+    font-size: 2.25rem; /* Equivalent to text-4xl */
+    font-weight: 700; /* Equivalent to font-bold */
+    text-align: center; /* Equivalent to text-center */
+    color: #1f2937; /* Equivalent to text-gray-800 */
+    margin-bottom: 3rem; /* Equivalent to mb-12 */
+}
+
+.projects-grid {
+    display: grid; /* Equivalent to grid */
+    grid-template-columns: repeat(1, minmax(0, 1fr)); /* Equivalent to grid-cols-1 */
+    gap: 2rem; /* Equivalent to gap-8 */
+}
+
+@media (min-width: 768px) { /* Equivalent to md: breakpoint */
+    .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Equivalent to md:grid-cols-2 */
+    }
+}
+
+@media (min-width: 1024px) { /* Equivalent to lg: breakpoint */
+    .projects-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)); /* Equivalent to lg:grid-cols-3 */
+    }
+}
+
+.project-card {
+    background-color: #fff; /* Equivalent to bg-white */
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Equivalent to shadow-md */
+    overflow: hidden; /* Equivalent to overflow-hidden */
+    transition: transform 0.3s ease-in-out; /* Equivalent to transition duration-300 */
+}
+
+.project-card:hover {
+    transform: scale(1.05); /* Equivalent to hover:scale-105 */
+}
+
+.project-image {
+    width: 100%; /* Equivalent to w-full */
+    height: 12rem; /* Equivalent to h-48 */
+    object-fit: cover; /* Equivalent to object-cover */
+}
+
+.project-content {
+    padding: 1.5rem; /* Equivalent to p-6 */
+}
+
+.project-title {
+    font-size: 1.5rem; /* Equivalent to text-2xl */
+    font-weight: 600; /* Equivalent to font-semibold */
+    color: #1a202c; /* Equivalent to text-gray-900 */
+    margin-bottom: 0.75rem; /* Equivalent to mb-3 */
+}
+
+.project-description {
+    color: #374151; /* Equivalent to text-gray-700 */
+    margin-bottom: 1rem; /* Equivalent to mb-4 */
+}
+
+.tech-tags-container {
+    display: flex; /* Equivalent to flex */
+    flex-wrap: wrap; /* Equivalent to flex-wrap */
+    gap: 0.5rem; /* Equivalent to gap-2 */
+    margin-bottom: 1rem; /* Equivalent to mb-4 */
+}
+
+.tech-tag {
+    font-size: 0.75rem; /* Equivalent to text-xs */
+    font-weight: 500; /* Equivalent to font-medium */
+    padding: 0.125rem 0.625rem; /* Equivalent to px-2.5 py-0.5 */
+    border-radius: 9999px; /* Equivalent to rounded-full */
+}
+
+/* Specific tech tag colors */
+.tech-tag.indigo {
+    background-color: #e0e7ff; /* Equivalent to bg-indigo-100 */
+    color: #3730a3; /* Equivalent to text-indigo-800 */
+}
+
+.tech-tag.green {
+    background-color: #d1fae5; /* Equivalent to bg-green-100 */
+    color: #065f46; /* Equivalent to text-green-800 */
+}
+
+.tech-tag.purple {
+    background-color: #ede9fe; /* Equivalent to bg-purple-100 */
+    color: #5b21b6; /* Equivalent to text-purple-800 */
+}
+
+.project-link {
+    color: #4f46e5; /* Equivalent to text-indigo-600 */
+    transition: color 0.3s ease-in-out; /* Equivalent to transition duration-300 */
+    font-weight: 600; /* Equivalent to font-semibold */
+    display: inline-flex; /* Equivalent to inline-flex */
+    align-items: center; /* Equivalent to items-center */
+    text-decoration: none; /* Ensure project links also don't have underlines */
+}
+
+.project-link:hover {
+    color: #3730a3; /* Equivalent to hover:text-indigo-800 */
+}
+
+.project-link svg {
+    margin-left: 0.5rem; /* Equivalent to ml-2 */
+    width: 1rem; /* Equivalent to w-4 */
+    height: 1rem; /* Equivalent to h-4 */
+}
+
+.project-link + .project-link { /* For spacing between multiple links like "View Code" and "Live Demo" */
+    margin-left: 1rem; /* Equivalent to ml-4 */
+}
+
+
+/* --- Contact Section --- */
+.contact-section {
+    background-color: #fff; /* Equivalent to bg-white */
+    padding-top: 4rem; /* Equivalent to py-16 */
+    padding-bottom: 4rem; /* Equivalent to py-16 */
+    border-radius: 0.5rem; /* Equivalent to rounded-lg */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Equivalent to shadow-sm */
+    margin-top: 2rem; /* Equivalent to my-8 */
+    margin-bottom: 2rem; /* Equivalent to my-8 */
+    text-align: center; /* Equivalent to text-center */
+}
+
+.contact-heading {
+    font-size: 2.25rem; /* Equivalent to text-4xl */
+    font-weight: 700; /* Equivalent to font-bold */
+    color: #1f2937; /* Equivalent to text-gray-800 */
+    margin-bottom: 2rem; /* Equivalent to mb-8 */
+}
+
+.contact-intro {
+    font-size: 1.125rem; /* Equivalent to text-lg */
+    color: #374151; /* Equivalent to text-gray-700 */
+    margin-bottom: 2rem; /* Equivalent to mb-8 */
+}
+
+.contact-buttons {
+    display: flex; /* Equivalent to flex */
+    justify-content: center; /* Equivalent to justify-center */
+    gap: 1.5rem; /* Equivalent to space-x-6 */
+}
+
+.contact-button {
+    padding: 0.75rem 1.5rem; /* Equivalent to px-6 py-3 */
+    border-radius: 9999px; /* Equivalent to rounded-full */
+    font-size: 1.125rem; /* Equivalent to text-lg */
+    font-weight: 600; /* Equivalent to font-semibold */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-lg */
+    transition: all 0.3s ease-in-out; /* Equivalent to transition duration-300 transform hover:scale-105 */
+    transform: scale(1); /* Initial state for transform hover effect */
+    display: flex; /* Equivalent to flex */
+    align-items: center; /* Equivalent to items-center */
+    text-decoration: none; /* REMOVED UNDERLINE */
+}
+
+.contact-button:hover {
+    transform: scale(1.05); /* Equivalent to hover:scale-105 */
+}
+
+.contact-button svg {
+    width: 1.5rem; /* Equivalent to w-6 */
+    height: 1.5rem; /* Equivalent to h-6 */
+    margin-right: 0.5rem; /* Equivalent to mr-2 */
+}
+
+/* Specific contact button colors */
+.contact-button.email {
+    background-color: #4f46e5; /* Equivalent to bg-indigo-600 */
+    color: #fff; /* Equivalent to text-white */
+}
+.contact-button.email:hover {
+    background-color: #3730a3; /* Equivalent to hover:bg-indigo-700 */
+}
+
+.contact-button.linkedin {
+    background-color: #1d4ed8; /* Equivalent to bg-blue-700 */
+    color: #fff; /* Equivalent to text-white */
+}
+.contact-button.linkedin:hover {
+    background-color: #1e40af; /* Equivalent to hover:bg-blue-800 */
+}
+
+.contact-button.github {
+    background-color: #1f2937; /* Equivalent to bg-gray-800 */
+    color: #fff; /* Equivalent to text-white */
+}
+.contact-button.github:hover {
+    background-color: #111827; /* Equivalent to hover:bg-gray-900 */
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: #111827; /* Equivalent to bg-gray-900 */
+    color: #fff; /* Equivalent to text-white */
+    padding-top: 2rem; /* Equivalent to py-8 */
+    padding-bottom: 2rem; /* Equivalent to py-8 */
+    text-align: center; /* Equivalent to text-center */
+    border-top-left-radius: 0.5rem; /* Equivalent to rounded-t-lg */
+    border-top-right-radius: 0.5rem; /* Equivalent to rounded-t-lg */
+}
+
+.footer-text {
+    font-size: 0.875rem; /* Equivalent to text-sm */
+    margin-top: 0.5rem; /* Equivalent to mt-2 */
 }
