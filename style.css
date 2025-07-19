@@ -1,399 +1,680 @@
 /*
-    Custom Styles for Zack's Personal Portfolio
-    This file replicates the visual style of the original Tailwind CSS design
-    using standard CSS properties, removing the need for the Tailwind CDN.
+    Custom Styles for Zack's Personal Portfolio - Inspired by HTML5 Up Solid State
+    This file provides all the styling, replacing Tailwind CSS for a custom approach.
 */
 
-/* --- Base Styles --- */
+/* --- Global & Base Styles --- */
+:root {
+    /* Define a color palette inspired by Solid State */
+    --color-primary: #6366f1; /* Indigo 500 */
+    --color-secondary: #9333ea; /* Purple 600 */
+    --color-dark: #1f2937; /* Gray 800 */
+    --color-light-gray: #f9fafb; /* Gray 50 */
+    --color-medium-gray: #e5e7eb; /* Gray 200 */
+    --color-text: #374151; /* Gray 700 */
+    --color-highlight: #fde047; /* Yellow 300 */
+    --color-border: #e0e7ff; /* Indigo 200 */
+    --color-accent: #ff6f61; /* A bright accent color, common in HTML5 Up themes */
+
+    /* Spacing scale (based on 1rem = 16px, similar to Tailwind's default) */
+    --spacing-xs: 0.25rem; /* 4px */
+    --spacing-sm: 0.5rem;  /* 8px */
+    --spacing-md: 1rem;    /* 16px */
+    --spacing-lg: 1.5rem;  /* 24px */
+    --spacing-xl: 2rem;    /* 32px */
+    --spacing-2xl: 3rem;   /* 48px */
+    --spacing-3xl: 4rem;   /* 64px */
+    --spacing-4xl: 5rem;   /* 80px */
+    --spacing-5xl: 6rem;   /* 96px */
+    --spacing-6xl: 8rem;   /* 128px */
+    --spacing-7xl: 10rem;  /* 160px */
+    --spacing-8xl: 12rem;  /* 192px */
+
+    /* Font sizes */
+    --font-size-sm: 0.875rem; /* 14px */
+    --font-size-base: 1rem;   /* 16px */
+    --font-size-lg: 1.125rem; /* 18px */
+    --font-size-xl: 1.25rem;  /* 20px */
+    --font-size-2xl: 1.5rem;  /* 24px */
+    --font-size-3xl: 1.875rem; /* 30px */
+    --font-size-4xl: 2.25rem; /* 36px */
+    --font-size-5xl: 3rem;    /* 48px */
+    --font-size-6xl: 3.75rem; /* 60px */ /* For very large hero text */
+}
+
+html {
+    box-sizing: border-box; /* Ensures padding and border are included in element's total width/height */
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 body {
-    font-family: 'Inter', sans-serif; /* Sets the default font */
-    scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
-    background-color: #f9fafb; /* Equivalent to bg-gray-50 */
-    color: #1f2937; /* Equivalent to text-gray-800 */
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    background-color: var(--color-light-gray);
+    color: var(--color-text);
+    line-height: 1.6; /* Default line height for readability */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll from off-canvas menu */
 }
 
-/* Styles for all main content sections */
-.section-container {
-    padding-left: 1rem; /* Equivalent to px-4 */
-    padding-right: 1rem; /* Equivalent to px-4 */
-    max-width: 1200px; /* Max width for content readability */
-    margin-left: auto; /* Equivalent to mx-auto */
-    margin-right: auto; /* Equivalent to mx-auto */
+/* For off-canvas menu */
+body.is-menu-visible {
+    overflow: hidden; /* Prevent scrolling when menu is open */
 }
 
-/* --- Navigation Bar --- */
+/* General link styling */
+a {
+    text-decoration: none; /* Remove underlines from all links by default */
+    color: inherit; /* Inherit color from parent */
+    transition: color 0.3s ease-in-out;
+}
+
+/* Section padding and max-width for content within sections */
+.wrapper {
+    padding: var(--spacing-6xl) var(--spacing-md); /* Vertical and horizontal padding */
+}
+
+.inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Header --- */
 .header {
-    background-color: #fff; /* Equivalent to bg-white */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Equivalent to shadow-md */
-    padding-top: 1rem; /* Equivalent to py-4 */
-    padding-bottom: 1rem; /* Equivalent to py-4 */
-    position: sticky; /* Equivalent to sticky */
-    top: 0; /* Equivalent to top-0 */
-    z-index: 50; /* Equivalent to z-50 */
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: var(--spacing-md) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100; /* High z-index to ensure it stays on top */
 }
 
-.navbar-content {
-    display: flex; /* Equivalent to flex */
-    justify-content: space-between; /* Equivalent to justify-between */
-    align-items: center; /* Equivalent to items-center */
-    /* .section-container handles padding and max-width for this */
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.logo {
-    font-size: 1.5rem; /* Equivalent to text-2xl */
-    font-weight: 700; /* Equivalent to font-bold */
-    color: #4f46e5; /* Equivalent to text-indigo-600 */
-    transition: color 0.3s ease-in-out; /* Equivalent to transition duration-300 */
-    text-decoration: none; /* REMOVED UNDERLINE from logo */
+.header-logo {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none; /* Ensure no underline */
 }
 
-.logo:hover {
-    color: #3730a3; /* Equivalent to hover:text-indigo-800 */
+.header-logo:hover {
+    color: var(--color-secondary);
 }
 
-.nav-links {
-    display: flex; /* Equivalent to flex */
-    gap: 1.5rem; /* Equivalent to space-x-6 */
+.menu-toggle {
+    display: block; /* Always show on mobile */
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    color: var(--color-text);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--spacing-xs);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.menu-toggle:hover {
+    background-color: var(--color-medium-gray);
+}
+
+/* Hide desktop nav by default, show menu toggle */
+.header-nav-list {
+    display: none; /* Hidden by default on small screens */
     list-style: none; /* REMOVED LIST DOTS */
-    padding: 0; /* Remove default padding from ul */
-    margin: 0; /* Remove default margin from ul */
+    margin: 0;
+    padding: 0;
+    gap: var(--spacing-2xl); /* Increased space between nav items for desktop */
 }
 
-.nav-link {
-    color: #4b5563; /* Equivalent to text-gray-600 */
-    transition: color 0.3s ease-in-out; /* Equivalent to transition duration-300 */
-    font-weight: 500; /* Equivalent to font-medium */
-    text-decoration: none; /* REMOVED UNDERLINE */
-    font-family: 'Inter', sans-serif; /* Explicitly set font to ensure consistency */
+/* --- Off-Canvas Menu --- */
+.menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Start off-screen */
+    width: 80%; /* Adjust as needed */
+    max-width: 300px;
+    height: 100%;
+    background-color: var(--color-dark);
+    color: #fff;
+    z-index: 200; /* Higher than header */
+    transition: right 0.3s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-2xl) var(--spacing-lg);
 }
 
-.nav-link:hover {
-    color: #4f46e5; /* Equivalent to hover:text-indigo-600 */
+.menu.active {
+    right: 0; /* Slide in */
 }
 
-/* --- Hero Section --- */
-.hero-section {
-    background: linear-gradient(to right, #6366f1, #9333ea); /* Equivalent to bg-gradient-to-r from-indigo-500 to-purple-600 */
-    color: #fff; /* Equivalent to text-white */
-    text-align: center; /* Equivalent to text-center */
-    padding-top: 5rem; /* Equivalent to py-20 */
-    padding-bottom: 5rem; /* Equivalent to py-20 */
-    border-bottom-left-radius: 0.5rem; /* Equivalent to rounded-b-lg */
-    border-bottom-right-radius: 0.5rem; /* Equivalent to rounded-b-lg */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-lg */
+.menu .inner {
+    width: 100%; /* Override default inner width for menu */
+    max-width: none;
+    margin: 0;
+    padding: 0;
 }
 
-.hero-title {
-    font-size: 3rem; /* Equivalent to text-5xl */
-    font-weight: 800; /* Equivalent to font-extrabold */
-    margin-bottom: 1rem; /* Equivalent to mb-4 */
-    line-height: 1.25; /* Equivalent to leading-tight */
+.menu h2 {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: var(--spacing-xl);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: var(--spacing-md);
 }
 
-.hero-title .highlight {
-    color: #fde047; /* Equivalent to text-yellow-300 */
+.menu-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1; /* Allows links to take available space */
 }
 
-.hero-subtitle {
-    font-size: 1.25rem; /* Equivalent to text-xl */
-    margin-bottom: 2rem; /* Equivalent to mb-8 */
-    opacity: 0.9; /* Equivalent to opacity-90 */
+.menu-links li {
+    margin-bottom: var(--spacing-sm);
 }
 
-.hero-button {
-    background-color: #fff; /* Equivalent to bg-white */
-    color: #4f46e5; /* Equivalent to text-indigo-600 */
-    padding: 0.75rem 2rem; /* Equivalent to px-8 py-3 */
-    border-radius: 9999px; /* Equivalent to rounded-full */
-    font-size: 1.125rem; /* Equivalent to text-lg */
-    font-weight: 600; /* Equivalent to font-semibold */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-lg */
-    transition: all 0.3s ease-in-out; /* Equivalent to transition duration-300 */
-    transform: scale(1); /* Initial state for transform hover effect */
-    display: inline-block; /* Buttons are inline by default, but this ensures block-level properties like padding work */
-    text-decoration: none; /* REMOVED UNDERLINE from hero button */
+.menu-links a {
+    display: block;
+    padding: var(--spacing-md);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    border-radius: var(--spacing-xs);
 }
 
-.hero-button:hover {
-    background-color: #e0e7ff; /* Equivalent to hover:bg-indigo-100 */
-    transform: scale(1.05); /* Equivalent to hover:scale-105 */
+.menu-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
 }
 
-/* --- About Me Section --- */
-.about-section {
-    background-color: #fff; /* Equivalent to bg-white */
-    padding-top: 4rem; /* Equivalent to py-16 */
-    padding-bottom: 4rem; /* Equivalent to py-16 */
-    border-radius: 0.5rem; /* Equivalent to rounded-lg */
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Equivalent to shadow-sm */
-    margin-top: 2rem; /* Equivalent to my-8 */
-    margin-bottom: 2rem; /* Equivalent to my-8 */
+.menu .close-button {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: var(--font-size-2xl);
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    transition: color 0.3s ease-in-out;
 }
 
-.about-heading {
-    font-size: 2.25rem; /* Equivalent to text-4xl */
-    font-weight: 700; /* Equivalent to font-bold */
-    text-align: center; /* Equivalent to text-center */
-    color: #1f2937; /* Equivalent to text-gray-800 */
-    margin-bottom: 3rem; /* Equivalent to mb-12 */
+.menu .close-button:hover {
+    color: #fff;
 }
 
-.about-content-wrapper {
-    display: flex; /* Equivalent to flex */
-    flex-direction: column; /* Equivalent to flex-col */
-    align-items: center; /* Equivalent to items-center */
-    gap: 2rem; /* Equivalent to space-y-8 */
+/* Overlay for off-canvas menu */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 150;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 }
 
-.profile-image-container {
-    margin-bottom: 0; /* Equivalent to mb-0 */
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
-.profile-image {
-    width: 25rem; /* Equivalent to w-48 (48 * 4px = 192px) */
-    height: 16rem; /* Equivalent to h-48 (48 * 4px = 192px) */
-    border-radius: 9999px; /* Equivalent to rounded-full */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-lg */
-    border: 4px solid #e0e7ff; /* Equivalent to border-4 border-indigo-200 */
-    object-fit: cover; /* Ensures the image covers the area, cropping if needed */
-    object-position: center; /* Centers the image content within the frame */
+
+/* --- Banner Section (Hero) --- */
+.banner-section {
+    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    color: #fff;
+    text-align: center;
+    padding: var(--spacing-7xl) var(--spacing-md); /* More vertical padding */
+    border-bottom-left-radius: var(--spacing-md);
+    border-bottom-right-radius: var(--spacing-md);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-.bio-text-container {
-    font-size: 1.125rem; /* Equivalent to text-lg */
-    line-height: 1.625; /* Equivalent to leading-relaxed */
-    color: #374151; /* Equivalent to text-gray-700 */
-    text-align: justify; /* Equivalent to text-justify */
-    max-width: 36rem; /* Equivalent to max-w-xl */
-    margin-left: auto; /* Equivalent to mx-auto */
-    margin-right: auto; /* Equivalent to mx-auto */
+.banner-section h1 {
+    font-size: var(--font-size-5xl);
+    font-weight: 800;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
 }
 
-.bio-text-container .highlight {
-    font-weight: 600; /* Equivalent to font-semibold */
-    color: #4f46e5; /* Equivalent to text-indigo-600 */
+.banner-section h1 .highlight {
+    color: var(--color-highlight);
 }
 
-.bio-paragraph {
-    margin-bottom: 1rem; /* Equivalent to mb-4 */
+.banner-section p {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-2xl);
+    opacity: 0.9;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* --- Projects Section --- */
-.projects-section {
-    background-color: #f3f4f6; /* Equivalent to bg-gray-100 */
-    padding-top: 4rem; /* Equivalent to py-16 */
-    padding-bottom: 4rem; /* Equivalent to py-16 */
-    border-radius: 0.5rem; /* Equivalent to rounded-lg */
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Equivalent to shadow-sm */
-    margin-top: 2rem; /* Equivalent to my-8 */
-    margin-bottom: 2rem; /* Equivalent to my-8 */
+.banner-button {
+    display: inline-block;
+    background-color: #fff;
+    color: var(--color-primary);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: 9999px; /* Fully rounded */
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+    text-decoration: none;
 }
 
-.projects-heading {
-    font-size: 2.25rem; /* Equivalent to text-4xl */
-    font-weight: 700; /* Equivalent to font-bold */
-    text-align: center; /* Equivalent to text-center */
-    color: #1f2937; /* Equivalent to text-gray-800 */
-    margin-bottom: 3rem; /* Equivalent to mb-12 */
+.banner-button:hover {
+    background-color: var(--color-border); /* Lighter indigo */
+    transform: scale(1.05);
 }
 
-.projects-grid {
-    display: grid; /* Equivalent to grid */
-    grid-template-columns: repeat(1, minmax(0, 1fr)); /* Equivalent to grid-cols-1 */
-    gap: 2rem; /* Equivalent to gap-8 */
+/* --- Main Wrapper for Content Sections --- */
+.main-wrapper {
+    background-color: #fff; /* Solid State often has a white background for main content */
+    margin: var(--spacing-3xl) auto; /* Spacing from banner/footer */
+    border-radius: var(--spacing-md);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-@media (min-width: 768px) { /* Equivalent to md: breakpoint */
-    .projects-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr)); /* Equivalent to md:grid-cols-2 */
+/* --- Spotlight Sections (Alternating Image/Text) --- */
+.spotlight-section {
+    display: flex;
+    flex-direction: column; /* Stack on small screens */
+    align-items: center;
+    padding: var(--spacing-6xl) var(--spacing-md);
+    border-bottom: 1px solid var(--color-medium-gray); /* Separator */
+}
+
+.spotlight-section:last-of-type {
+    border-bottom: none; /* No border on the last one */
+}
+
+.spotlight-section .image-container {
+    width: 100%;
+    max-width: 400px; /* Limit image size on larger screens */
+    margin-bottom: var(--spacing-xl);
+    border-radius: var(--spacing-sm);
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.spotlight-section img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.spotlight-section .content {
+    text-align: center;
+    max-width: 700px;
+}
+
+.spotlight-section h2 {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.spotlight-section p {
+    font-size: var(--font-size-lg);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Project "Learn more" button styling */
+.special-button {
+    display: inline-block;
+    background-color: var(--color-primary); /* Primary color for background */
+    color: #fff; /* White text color */
+    padding: var(--spacing-sm) var(--spacing-lg); /* Padding for pill shape */
+    border-radius: 9999px; /* Pill shape */
+    font-size: var(--font-size-sm); /* Smaller font size */
+    font-weight: 600;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Keep a subtle shadow */
+    text-decoration: none; /* Ensure no underline */
+}
+
+.special-button:hover {
+    background-color: var(--color-secondary); /* Hover color */
+    transform: translateY(-2px); /* Slight lift on hover */
+}
+
+/* Reverse layout for alternate spotlights */
+.spotlight-section.alt {
+    flex-direction: column-reverse; /* Image below text on small screens */
+}
+
+@media (min-width: 768px) { /* Tablet and Desktop */
+    .spotlight-section {
+        flex-direction: row; /* Image and text side-by-side */
+        justify-content: space-between;
+        align-items: center;
+        text-align: left; /* Align text left */
+        gap: var(--spacing-3xl);
+    }
+    .spotlight-section .image-container {
+        width: 40%; /* Image takes less width */
+        margin-bottom: 0;
+    }
+    .spotlight-section .content {
+        width: 60%; /* Content takes more width */
+        text-align: left;
+    }
+    .spotlight-section.alt {
+        flex-direction: row-reverse; /* Image on right, text on left */
     }
 }
 
-@media (min-width: 1024px) { /* Equivalent to lg: breakpoint */
-    .projects-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr)); /* Equivalent to lg:grid-cols-3 */
+/* --- Features Section (for multiple project cards) --- */
+.features-section {
+    padding: var(--spacing-6xl) var(--spacing-md);
+    background-color: var(--color-light-gray); /* Alternating background */
+    border-radius: var(--spacing-md);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    margin: var(--spacing-3xl) auto;
+}
+
+.features-section .inner {
+    text-align: center;
+}
+
+.features-section h2 {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column on small screens */
+    gap: var(--spacing-2xl); /* Gap between cards */
+}
+
+@media (min-width: 768px) { /* Medium screens */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns */
     }
 }
 
-.project-card {
-    background-color: #fff; /* Equivalent to bg-white */
-    border-radius: 0.5rem; /* Equivalent to rounded-lg */
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Equivalent to shadow-md */
-    overflow: hidden; /* Equivalent to overflow-hidden */
-    transition: transform 0.3s ease-in-out; /* Equivalent to transition duration-300 */
+@media (min-width: 1024px) { /* Large screens */
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr); /* Three columns */
+    }
 }
 
-.project-card:hover {
-    transform: scale(1.05); /* Equivalent to hover:scale-105 */
+.feature-item {
+    background-color: #fff;
+    border-radius: var(--spacing-sm); /* Slightly less rounded than sections */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    text-align: left; /* Text within feature item */
 }
 
-.project-image {
-    width: 100%; /* Equivalent to w-full */
-    height: 12rem; /* Equivalent to h-48 */
-    object-fit: cover; /* Equivalent to object-cover */
+.feature-item:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -5px rgba(0, 0, 0, 0.08); /* Stronger shadow */
 }
 
-.project-content {
-    padding: 1.5rem; /* Equivalent to p-6 */
+.feature-item .image-container {
+    width: 100%;
+    height: 12rem; /* Consistent image height */
+    overflow: hidden;
 }
 
-.project-title {
-    font-size: 1.5rem; /* Equivalent to text-2xl */
-    font-weight: 600; /* Equivalent to font-semibold */
-    color: #1a202c; /* Equivalent to text-gray-900 */
-    margin-bottom: 0.75rem; /* Equivalent to mb-3 */
+.feature-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
-.project-description {
-    color: #374151; /* Equivalent to text-gray-700 */
-    margin-bottom: 1rem; /* Equivalent to mb-4 */
+.feature-item-content {
+    padding: var(--spacing-lg);
+}
+
+.feature-item-content h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.feature-item-content p {
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-lg);
 }
 
 .tech-tags-container {
     display: flex; /* Equivalent to flex */
     flex-wrap: wrap; /* Equivalent to flex-wrap */
-    gap: 0.5rem; /* Equivalent to gap-2 */
-    margin-bottom: 1rem; /* Equivalent to mb-4 */
+    gap: var(--spacing-sm); /* Increased gap for tags */
+    margin-bottom: var(--spacing-lg); /* Space below tags */
 }
 
 .tech-tag {
-    font-size: 0.75rem; /* Equivalent to text-xs */
-    font-weight: 500; /* Equivalent to font-medium */
-    padding: 0.125rem 0.625rem; /* Equivalent to px-2.5 py-0.5 */
-    border-radius: 9999px; /* Equivalent to rounded-full */
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    padding: var(--spacing-xs) var(--spacing-md); /* More padding for pill shape */
+    border-radius: 9999px; /* Pill shape */
+    white-space: nowrap; /* Prevent tags from breaking lines */
+    display: inline-block; /* Ensures padding and border-radius work correctly */
 }
 
 /* Specific tech tag colors */
 .tech-tag.indigo {
-    background-color: #e0e7ff; /* Equivalent to bg-indigo-100 */
-    color: #3730a3; /* Equivalent to text-indigo-800 */
+    background-color: var(--color-border);
+    color: var(--color-primary);
 }
 
 .tech-tag.green {
-    background-color: #d1fae5; /* Equivalent to bg-green-100 */
-    color: #065f46; /* Equivalent to text-green-800 */
+    background-color: #d1fae5;
+    color: #065f46;
 }
 
 .tech-tag.purple {
-    background-color: #ede9fe; /* Equivalent to bg-purple-100 */
-    color: #5b21b6; /* Equivalent to text-purple-800 */
+    background-color: #ede9fe;
+    color: #5b21b6;
+}
+
+.project-link-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md); /* Space between links */
+    margin-top: var(--spacing-lg); /* Space above links */
 }
 
 .project-link {
-    color: #4f46e5; /* Equivalent to text-indigo-600 */
-    transition: color 0.3s ease-in-out; /* Equivalent to transition duration-300 */
-    font-weight: 600; /* Equivalent to font-semibold */
-    display: inline-flex; /* Equivalent to inline-flex */
-    align-items: center; /* Equivalent to items-center */
-    text-decoration: none; /* Ensure project links also don't have underlines */
+    color: var(--color-primary);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
 }
 
 .project-link:hover {
-    color: #3730a3; /* Equivalent to hover:text-indigo-800 */
+    color: var(--color-secondary);
 }
 
 .project-link svg {
-    margin-left: 0.5rem; /* Equivalent to ml-2 */
-    width: 1rem; /* Equivalent to w-4 */
-    height: 1rem; /* Equivalent to h-4 */
-}
-
-.project-link + .project-link { /* For spacing between multiple links like "View Code" and "Live Demo" */
-    margin-left: 1rem; /* Equivalent to ml-4 */
+    margin-left: var(--spacing-xs);
+    width: var(--spacing-md);
+    height: var(--spacing-md);
 }
 
 
-/* --- Contact Section --- */
+/* --- Contact Section (Footer-like in Solid State) --- */
 .contact-section {
-    background-color: #fff; /* Equivalent to bg-white */
-    padding-top: 4rem; /* Equivalent to py-16 */
-    padding-bottom: 4rem; /* Equivalent to py-16 */
-    border-radius: 0.5rem; /* Equivalent to rounded-lg */
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* Equivalent to shadow-sm */
-    margin-top: 2rem; /* Equivalent to my-8 */
-    margin-bottom: 2rem; /* Equivalent to my-8 */
-    text-align: center; /* Equivalent to text-center */
+    background-color: var(--color-dark); /* Dark background for footer area */
+    color: #fff;
+    padding: var(--spacing-6xl) var(--spacing-md);
+    border-top-left-radius: var(--spacing-md);
+    border-top-right-radius: var(--spacing-md);
+    margin-top: var(--spacing-3xl);
+}
+
+.contact-section .inner {
+    text-align: center; /* Center content within footer */
 }
 
 .contact-heading {
-    font-size: 2.25rem; /* Equivalent to text-4xl */
-    font-weight: 700; /* Equivalent to font-bold */
-    color: #1f2937; /* Equivalent to text-gray-800 */
-    margin-bottom: 2rem; /* Equivalent to mb-8 */
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-3xl); /* Increased margin after heading */
+    color: #fff; /* Ensure heading is white */
 }
 
-.contact-intro {
-    font-size: 1.125rem; /* Equivalent to text-lg */
-    color: #374151; /* Equivalent to text-gray-700 */
-    margin-bottom: 2rem; /* Equivalent to mb-8 */
+/* Removed .contact-grid and related form styles */
+
+.contact-info-wrapper {
+    /* No specific styles needed here as it's now the primary content container */
 }
 
-.contact-buttons {
-    display: flex; /* Equivalent to flex */
-    justify-content: center; /* Equivalent to justify-center */
-    gap: 1.5rem; /* Equivalent to space-x-6 */
+.contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Arrange items horizontally */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    justify-content: space-evenly; /* Distribute items evenly with space around them */
+    align-items: flex-start; /* Align items to the top if they have different heights */
+    max-width: 800px; /* Limit width to keep icons from spreading too far */
+    margin: 0 auto; /* Center the list itself */
 }
 
-.contact-button {
-    padding: 0.75rem 1.5rem; /* Equivalent to px-6 py-3 */
-    border-radius: 9999px; /* Equivalent to rounded-full */
-    font-size: 1.125rem; /* Equivalent to text-lg */
-    font-weight: 600; /* Equivalent to font-semibold */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Equivalent to shadow-lg */
-    transition: all 0.3s ease-in-out; /* Equivalent to transition duration-300 transform hover:scale-105 */
-    transform: scale(1); /* Initial state for transform hover effect */
-    display: flex; /* Equivalent to flex */
-    align-items: center; /* Equivalent to items-center */
-    text-decoration: none; /* REMOVED UNDERLINE */
+.contact-list li {
+    margin-bottom: var(--spacing-md); /* Keep some vertical margin for wrapping */
+    font-size: var(--font-size-lg); /* Base font size for text */
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column; /* Stack icon and text vertically */
+    align-items: center; /* Center icon and text within each list item */
+    text-align: center; /* Center text below icon */
+    position: relative;
+    padding: 0; /* Remove previous padding-left */
+    flex-basis: auto; /* Allow items to shrink/grow based on content */
+    min-width: 120px; /* Ensure a minimum width for each icon block */
 }
 
-.contact-button:hover {
-    transform: scale(1.05); /* Equivalent to hover:scale-105 */
+.contact-list li.icon::before {
+    content: '';
+    position: static; /* Remove absolute positioning */
+    margin-bottom: var(--spacing-sm); /* Small gap between icon and text */
+    width: var(--spacing-4xl); /* Larger icon circle */
+    height: var(--spacing-4xl); /* Larger icon circle */
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: var(--font-size-xl); /* Larger Font Awesome icon */
 }
 
-.contact-button svg {
-    width: 1.5rem; /* Equivalent to w-6 */
-    height: 1.5rem; /* Equivalent to h-6 */
-    margin-right: 0.5rem; /* Equivalent to mr-2 */
+/* Specific Font Awesome icon content and font-family for each item */
+.contact-list .icon.fa-phone::before { content: "\f095"; font-family: "Font Awesome 5 Free"; font-weight: 900; }
+.contact-list .icon.fa-envelope::before { content: "\f0e0"; font-family: "Font Awesome 5 Free"; font-weight: 900; }
+.contact-list .icon.fa-instagram::before { content: "\f16d"; font-family: "Font Awesome 5 Brands"; }
+
+
+.contact-list a {
+    color: #fff; /* Changed to white for email and instagram links */
 }
 
-/* Specific contact button colors */
-.contact-button.email {
-    background-color: #4f46e5; /* Equivalent to bg-indigo-600 */
-    color: #fff; /* Equivalent to text-white */
-}
-.contact-button.email:hover {
-    background-color: #3730a3; /* Equivalent to hover:bg-indigo-700 */
-}
-
-.contact-button.linkedin {
-    background-color: #1d4ed8; /* Equivalent to bg-blue-700 */
-    color: #fff; /* Equivalent to text-white */
-}
-.contact-button.linkedin:hover {
-    background-color: #1e40af; /* Equivalent to hover:bg-blue-800 */
+.copyright-list {
+    list-style: none;
+    margin: var(--spacing-3xl) 0 0 0; /* Increased top margin for separation */
+    padding: 0;
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center; /* Ensure copyright is centered */
 }
 
-.contact-button.github {
-    background-color: #1f2937; /* Equivalent to bg-gray-800 */
-    color: #fff; /* Equivalent to text-white */
-}
-.contact-button.github:hover {
-    background-color: #111827; /* Equivalent to hover:bg-gray-900 */
+.copyright-list li {
+    display: inline-block;
+    margin: 0 var(--spacing-sm);
 }
 
-/* --- Footer --- */
-.footer {
-    background-color: #111827; /* Equivalent to bg-gray-900 */
-    color: #fff; /* Equivalent to text-white */
-    padding-top: 2rem; /* Equivalent to py-8 */
-    padding-bottom: 2rem; /* Equivalent to py-8 */
-    text-align: center; /* Equivalent to text-center */
-    border-top-left-radius: 0.5rem; /* Equivalent to rounded-t-lg */
-    border-top-right-radius: 0.5rem; /* Equivalent to rounded-t-lg */
+.copyright-list li:first-child {
+    margin-left: 0;
 }
 
-.footer-text {
-    font-size: 0.875rem; /* Equivalent to text-sm */
-    margin-top: 0.5rem; /* Equivalent to mt-2 */
+.copyright-list li:last-child {
+    margin-right: 0;
+}
+
+/* --- Responsive Adjustments --- */
+@media (min-width: 768px) { /* Medium screens and up */
+    .header-content {
+        justify-content: space-between; /* Logo left, nav right */
+    }
+    .menu-toggle {
+        display: none; /* Hide menu toggle on larger screens */
+    }
+    .header-nav-list {
+        display: flex; /* Show desktop nav */
+    }
+    .banner-section h1 {
+        font-size: var(--font-size-6xl); /* Larger hero text */
+    }
+    .banner-section p {
+        font-size: var(--font-size-xl);
+    }
+    .about-heading, .projects-heading, .contact-heading {
+        font-size: var(--font-size-5xl); /* Larger headings on larger screens */
+    }
+    .contact-list li {
+        margin-bottom: 0; /* No vertical margin when horizontal */
+    }
+}
+
+@media (min-width: 1024px) { /* Large screens and up */
+    .wrapper {
+        padding: var(--spacing-8xl) var(--spacing-md); /* Even more vertical padding */
+    }
+    .banner-section h1 {
+        font-size: 4rem; /* Even larger on large screens */
+    }
+    .banner-section p {
+        font-size: 1.5rem;
+    }
+}
+
+/* For very small screens, adjust padding */
+@media (max-width: 480px) {
+    .wrapper {
+        padding: var(--spacing-5xl) var(--spacing-sm);
+    }
+    .banner-section h1 {
+        font-size: var(--font-size-4xl);
+    }
+    .banner-section p {
+        font-size: var(--font-size-base);
+    }
+    .about-heading, .projects-heading, .contact-heading {
+        font-size: var(--font-size-3xl);
+    }
 }

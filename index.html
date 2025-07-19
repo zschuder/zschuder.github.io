@@ -3,190 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zack's Personal Portfolio</title>
-    <!--
-        Removed Tailwind CSS CDN.
-        Now linking to your custom stylesheet (style.css).
-        This makes your website load faster as it removes an external dependency
-        and the overhead of Tailwind's runtime processing.
-        Make sure style.css is in the same directory as index.html.
-    -->
+    <title>Zack Schuder - Solid State Portfolio</title>
+    <!-- Link to your custom stylesheet -->
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons (Solid State uses icons extensively) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
-    <!-- Navigation Bar -->
-    <header class="header">
-        <nav class="navbar-content section-container">
-            <!-- Your Name/Logo - Clickable to scroll to top -->
-            <a href="#hero" class="logo">
-                Zack Schuder
-            </a>
-            <!-- Navigation Links -->
-            <ul class="nav-links">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="inner header-content">
+                <a href="#banner" class="header-logo">Zack Schuder</a>
+                <nav>
+                    <!-- Desktop Navigation (hidden on mobile, shown on larger screens) -->
+                    <ul class="header-nav-list">
+                        <li><a href="#about" class="header-nav-link">About</a></li>
+                        <li><a href="#projects" class="header-nav-link">Projects</a></li>
+                        <li><a href="#contact" class="header-nav-link">Contact</a></li>
+                    </ul>
+                    <!-- Mobile Menu Toggle -->
+                    <a href="#menu" class="menu-toggle" id="menu-toggle">Menu</a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Off-Canvas Menu (Mobile/Tablet) -->
+        <nav id="menu" class="menu">
+            <div class="inner">
+                <h2>Menu</h2>
+                <ul class="menu-links">
+                    <li><a href="#banner">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <!-- Add other links if needed, e.g., Log In, Sign Up -->
+                    <li><a href="#">Log In</a></li>
+                    <li><a href="#">Sign Up</a></li>
+                </ul>
+                <a href="#" class="close-button" id="close-menu">&times;</a>
+            </div>
         </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero-section">
-        <div class="section-container">
-            <h1 class="hero-title">Hi, I'm <span class="highlight">Zack Schuder</span>!</h1>
-            <p class="hero-subtitle">A passionate physics and data science undergraduate looking to make an impact.</p>
-            <a href="#projects" class="hero-button">
-                View My Work
-            </a>
-        </div>
-    </section>
+        <!-- Menu Overlay -->
+        <div class="menu-overlay" id="menu-overlay"></div>
 
-    <!-- About Me Section -->
-    <section id="about" class="about-section">
-        <div class="section-container">
-            <h2 class="about-heading">About Me</h2>
-            <div class="about-content-wrapper">
-                <div class="profile-image-container">
-                    <!--
-                        Image path corrected to be relative.
-                        Using the custom 'profile-image' class for styling.
-                    -->
-                    <img src="images/IMG_4215.jpg" alt="A headshot of Zack Schuder" class="profile-image">
-                </div>
-                <!-- About Me text content -->
-                <div class="bio-text-container">
-                    <p class="bio-paragraph">
-                        Hello! I'm <span class="highlight">Zack Schuder</span>, and I'm an undergraduate at the University of California, Berkeley, pursuing a studies in physics and data science. My academic path reflects a deep curiosity about how fundamental science can be used to address real-world challenges—especially in areas like sustainable energy and the management and analysis of large-scale data systems.
-                    </p>
-                    <p class="bio-paragraph">
-                        At Berkeley, I’ve built a strong foundation in classical mechanics, electromagnetism, optics, and quantum mechanics, and I continue to expand my technical expertise through coursework in computer science and data science, including Python programming, statistics, and machine learning. I’ve also contributed to interdisciplinary projects, such as building a music recommendation system and working with advanced fabrication technologies for scientific applications.
-                    </p>
-                    <p class="bio-paragraph">
-                        Outside the classroom, I serve as Vice President of the UC Berkeley Men's Club Volleyball Team, where I help lead a competitive, student-run program. In this role, I monitor team finances to ensure sustainable growth, assist in organizing tryouts, travel logistics, and tournament scheduling, and support long-term planning to strengthen the club’s future. This experience has sharpened my organizational and leadership skills, and taught me how to collaborate across diverse teams to accomplish shared goals.
-                    </p>
-                    <p class="bio-paragraph">
-                        I'm always eager to learn new technologies and take on challenging projects. This portfolio showcases some of my work and highlights my journey in physics. Feel free to explore and get in touch!
-                    </p>
-                </div>
+        <!-- Banner Section (Hero) -->
+        <section id="banner" class="banner-section">
+            <div class="inner">
+                <h1>Hi, I'm <span class="highlight">Zack Schuder</span>!</h1>
+                <p>A passionate physics and data science undergraduate looking to make an impact.</p>
+                <a href="#projects" class="banner-button">View My Work</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section">
-        <div class="section-container">
-            <h2 class="projects-heading">My Projects</h2>
-            <div class="projects-grid">
-                <!-- Project Card 1 -->
-                <div class="project-card">
-                    <!-- Image path corrected to be relative. -->
-                    <img src="images/Presentation1.jpg" alt="Collage of photos at UNL, experimenting with various equipment" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">IFE-STAR Undergraduate Research</h3>
-                        <p class="project-description">
-                            Investigated target fabrication and pre-implosion diagnostics for laster confinement fusion research using two-photon polyermization and cryogenic coherent anti-Stoke Raman scattering microscopy. Research was conducted at the University of Nebraska-Lincoln, in collaboration with Lawrence Livermore National Laboratory and the Laboratory for Laser Enegetics at the University of Rochester.
-                        </p>
-                        <div class="tech-tags-container">
-                            <span class="tech-tag indigo">Fusion Energy</span>
-                            <span class="tech-tag indigo">Laser Technology</span>
-                            <span class="tech-tag indigo">Nanotechnology</span>
-                            <span class="tech-tag indigo">Optics Physics</span>
-                            <span class="tech-tag indigo">Microfluidics</span>
-                            <span class="tech-tag indigo">CAD</span>
-                            <span class="tech-tag indigo">SEM</span>
-                            <span class="tech-tag indigo">Image Data Analysis</span>
-                            <span class="tech-tag indigo">Nanoscribe Photonic Professional GT</span>
-                            <span class="tech-tag indigo">Newport WEU-02 Laser</span>
-                            <span class="tech-tag indigo">Newport SCG-800 Supercontinuum Device</span>
-                            <span class="tech-tag indigo">Powerpoint</span>
-                            <span class="tech-tag indigo">Excel</span>
+        <!-- Main Wrapper for Content Sections -->
+        <div id="wrapper" class="main-wrapper">
+
+            <!-- "My Journey & Skills" section was removed as requested -->
+
+            <!-- About Me Section (Adapted to Spotlight style) -->
+            <section id="about" class="spotlight-section alt">
+                <div class="inner content">
+                    <h2 class="about-heading">About Me</h2>
+                    <div class="about-content-wrapper">
+                        <div class="profile-image-container">
+                            <img src="images/IMG_4215.jpg" alt="A headshot of Zack Schuder" class="profile-image">
                         </div>
-                        <!-- Link path corrected to be relative. -->
-                        <a href="projects/LANE_summer2025/Poster Presentation IFE-STAR(Image1).jpg" target="_blank" rel="noopener noreferrer" class="project-link">
-                            View Project
-                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
+                        <div class="bio-text-container">
+                            <p class="bio-paragraph">
+                                Hello! I'm <span class="highlight">Zack Schuder</span>, and I'm an undergraduate at the University of California, Berkeley, pursuing a studies in physics and data science. My academic path reflects a deep curiosity about how fundamental science can be used to address real-world challenges—especially in areas like sustainable energy and the management and analysis of large-scale data systems.
+                            </p>
+                            <p class="bio-paragraph">
+                                At Berkeley, I’ve built a strong foundation in classical mechanics, electromagnetism, optics, and quantum mechanics, and I continue to expand my technical expertise through coursework in computer science and data science, including Python programming, statistics, and machine learning. I’ve also contributed to interdisciplinary projects, such as building a music recommendation system and working with advanced fabrication technologies for scientific applications.
+                            </p>
+                            <p class="bio-paragraph">
+                                Outside the classroom, I serve as Vice President of the UC Berkeley Men's Club Volleyball Team, where I help lead a competitive, student-run program. In this role, I monitor team finances to ensure sustainable growth, assist in organizing tryouts, travel logistics, and tournament scheduling, and support long-term planning to strengthen the club’s future. This experience has sharpened my organizational and leadership skills, and taught me how to collaborate across diverse teams to accomplish shared goals.
+                            </p>
+                            <p class="bio-paragraph">
+                                I'm always eager to learn new technologies and take on challenging projects. This portfolio showcases some of my work and highlights my journey in physics. Feel free to explore and get in touch!
+                            </p>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Project Card 2 -->
-                <div class="project-card">
-                    <img src="https://placehold.co/600x400/B8B8B8/333333?text=Project+2+Image" alt="Project 2" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Project Title Two</h3>
-                        <p class="project-description">
-                            A brief description of Project Two. Explain its purpose and the key features. Mention any challenges you overcame.
-                        </p>
-                        <div class="tech-tags-container">
-                            <span class="tech-tag green">React</span>
-                            <span class="tech-tag green">Node.js</span>
-                            <span class="tech-tag green">MongoDB</span>
-                        </div>
-                        <a href="#" class="project-link">
-                            View Project
-                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
+            <!-- Projects Section (Adapted to Features style) -->
+            <section id="projects" class="features-section">
+                <div class="inner">
+                    <h2 class="projects-heading">My Projects</h2>
+                    <div class="features-grid">
+                        <!-- Project Card 1 -->
+                        <article class="feature-item">
+                            <div class="image-container">
+                                <img src="images/Presentation1.jpg" alt="Collage of photos at UNL, experimenting with various equipment">
+                            </div>
+                            <div class="feature-item-content">
+                                <h3 class="project-title">IFE-STAR Undergraduate Research</h3>
+                                <p class="project-description">
+                                    Investigated target fabrication and pre-implosion diagnostics for laster confinement fusion research using two-photon polyermization and cryogenic coherent anti-Stoke Raman scattering microscopy. Research was conducted at the University of Nebraska-Lincoln, in collaboration with Lawrence Livermore National Laboratory and the Laboratory for Laser Enegetics at the University of Rochester.
+                                </p>
+                                <div class="tech-tags-container">
+                                    <span class="tech-tag indigo">Fusion Energy</span>
+                                    <span class="tech-tag indigo">Laser Technology</span>
+                                    <span class="tech-tag indigo">Nanotechnology</span>
+                                    <span class="tech-tag indigo">Optics Physics</span>
+                                    <span class="tech-tag indigo">Microfluidics</span>
+                                    <span class="tech-tag indigo">CAD</span>
+                                    <span class="tech-tag indigo">SEM</span>
+                                    <span class="tech-tag indigo">Image Data Analysis</span>
+                                    <span class="tech-tag indigo">Nanoscribe Photonic Professional GT</span>
+                                    <span class="tech-tag indigo">Newport WEU-02 Laser</span>
+                                    <span class="tech-tag indigo">Newport SCG-800 Supercontinuum Device</span>
+                                    <span class="tech-tag indigo">Powerpoint</span>
+                                    <span class="tech-tag indigo">Excel</span>
+                                </div>
+                                <div class="project-link-group">
+                                    <a href="projects/LANE_summer2025/Poster Presentation IFE-STAR(Image1).jpg" target="_blank" rel="noopener noreferrer" class="special-button">
+                                        Learn more
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Project Card 2 -->
+                        <article class="feature-item">
+                            <div class="image-container">
+                                <img src="https://placehold.co/600x400/B8B8B8/333333?text=Project+2+Image" alt="Project 2">
+                            </div>
+                            <div class="feature-item-content">
+                                <h3 class="project-title">Project Title Two</h3>
+                                <p class="project-description">
+                                    A brief description of Project Two. Explain its purpose and the key features. Mention any challenges you overcame.
+                                </p>
+                                <div class="tech-tags-container">
+                                    <span class="tech-tag green">React</span>
+                                    <span class="tech-tag green">Node.js</span>
+                                    <span class="tech-tag green">MongoDB</span>
+                                </div>
+                                <div class="project-link-group">
+                                    <a href="#" class="special-button">
+                                        Learn more
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Project Card 3 -->
+                        <article class="feature-item">
+                            <div class="image-container">
+                                <img src="https://placehold.co/600x400/B8B8B8/333333?text=Project+3+Image" alt="Project 3">
+                            </div>
+                            <div class="feature-item-content">
+                                <h3 class="project-title">Project Title Three</h3>
+                                <p class="project-description">
+                                    A brief description of Project Three. Focus on the problem it solves and the impact it had.
+                                </p>
+                                <div class="tech-tags-container">
+                                    <span class="tech-tag purple">Python</span>
+                                    <span class="tech-tag purple">Data Analysis</span>
+                                    <span class="tech-tag purple">Machine Learning</span>
+                                </div>
+                                <div class="project-link-group">
+                                    <a href="#" class="special-button">
+                                        Learn more
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
                     </div>
                 </div>
+            </section>
 
-                <!-- Project Card 3 -->
-                <div class="project-card">
-                    <img src="https://placehold.co/600x400/B8B8B8/333333?text=Project+3+Image" alt="Project 3" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">Project Title Three</h3>
-                        <p class="project-description">
-                            A brief description of Project Three. Focus on the problem it solves and the impact it had.
-                        </p>
-                        <div class="tech-tags-container">
-                            <span class="tech-tag purple">Python</span>
-                            <span class="tech-tag purple">Data Analysis</span>
-                            <span class="tech-tag purple">Machine Learning</span>
-                        </div>
-                        <a href="#" class="project-link">
-                            View Project
-                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    </div>
+        </div> <!-- End main-wrapper -->
+
+        <!-- Contact Section (Footer-like in Solid State) -->
+        <section id="contact" class="contact-section">
+            <div class="inner">
+                <h2 class="contact-heading">Get in touch</h2>
+                <!-- Removed the Latin text paragraph and the form as requested -->
+                <div class="contact-info-wrapper">
+                    <ul class="contact-list">
+                        <li class="icon solid fa-phone">(650) 509-0053</li>
+                        <li class="icon solid fa-envelope"><a href="mailto:ztschuder@gmail.com">ztschuder@gmail.com</a></li>
+                        <li class="icon brands fa-instagram"><a href="https://www.instagram.com/zschuder/">zschuder</a></li>
+                    </ul>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="section-container">
-            <h2 class="contact-heading">Get In Touch</h2>
-            <p class="contact-intro">
-                I'm always open to new opportunities and collaborations. Feel free to reach out!
-            </p>
-            <div class="contact-buttons">
-                <!-- Email Link -->
-                <a href="mailto:your.email@example.com" class="contact-button email">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7"></path></svg>
-                    Email Me
-                </a>
-                <!-- LinkedIn Link -->
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="contact-button linkedin">
-                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-7.982v16h7.982v-8.75c0-4.017 4.004-4.382 4.004 0v8.75h7.982v-16h-7.982z"/></svg>
-                    LinkedIn
-                </a>
-                <!-- GitHub Link (Optional) -->
-                <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" class="contact-button github">
-                    <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.007.07 1.532 1.03 1.532 1.03.89 1.529 2.341 1.089 2.91.833.091-.647.35-1.085.636-1.337-2.22-.253-4.555-1.113-4.555-4.953 0-1.096.391-1.992 1.029-2.697-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.7.115 2.5.333 1.909-1.295 2.747-1.025 2.747-1.025.546 1.379.202 2.398.099 2.65.64.705 1.028 1.601 1.028 2.697 0 3.85-2.339 4.69-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C21.137 20.17 24 16.415 24 12.017 24 6.484 19.522 2 14 2h-2z" clip-rule="evenodd"/></svg>
-                    GitHub
-                </a>
+                <ul class="copyright-list">
+                    <li>&copy; Untitled Inc. All rights reserved.</li>
+                </ul>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="section-container">
-            <p>&copy; 2025 Your Name. All rights reserved.</p>
-            <p class="footer-text">Built with ❤️ and custom CSS.</p>
-        </div>
-    </footer>
+    </div> <!-- End page-wrapper -->
+
+    <!-- Scripts -->
+    <script src="main.js"></script>
 
 </body>
 </html>
