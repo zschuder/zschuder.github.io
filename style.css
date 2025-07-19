@@ -1,0 +1,22 @@
+/*
+    This is your main CSS file (style.css).
+    It contains custom styles for your website.
+*/
+
+/* Set the default font to Inter for the entire body */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Smooth scrolling for anchor links when clicking navigation items */
+    scroll-behavior: smooth;
+}
+
+/*
+    Basic styling for sections to ensure they take full width and have padding.
+    'max-width' keeps content readable on very large screens.
+    'margin: 0 auto;' horizontally centers the section content.
+*/
+section {
+    padding: 4rem 1rem; /* Vertical padding (top/bottom), horizontal padding (left/right) */
+    max-width: 1200px; /* Maximum width for the content inside sections */
+    margin: 0 auto; /* Centers the section horizontally on the page */
+}
