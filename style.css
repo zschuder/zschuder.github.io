@@ -598,6 +598,7 @@ a {
 .contact-list .icon.fa-phone::before { content: "\f095"; font-family: "Font Awesome 5 Free"; font-weight: 900; }
 .contact-list .icon.fa-envelope::before { content: "\f0e0"; font-family: "Font Awesome 5 Free"; font-weight: 900; }
 .contact-list .icon.fa-instagram::before { content: "\f16d"; font-family: "Font Awesome 5 Brands"; }
+.contact-list .icon.fa-linkedin::before { content: "\f08c"; font-family: "Font Awesome 5 Brands"; font-weight: 900; }
 
 
 .contact-list a {
