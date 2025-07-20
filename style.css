@@ -549,9 +549,9 @@ a {
 
 /* Removed .contact-grid and related form styles */
 
-.contact-info-wrapper {
-    /* No specific styles needed here as it's now the primary content container */
-}
+/*.contact-info-wrapper {
+    /* No specific styles needed here as it's now the primary content container
+}*/
 
 .contact-list {
     list-style: none;
