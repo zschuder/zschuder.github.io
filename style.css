@@ -5,16 +5,16 @@
 
 /* --- Global & Base Styles --- */
 :root {
-    /* Define a color palette inspired by Solid State */
-    --color-primary: #6366f1; /* Indigo 500 */
-    --color-secondary: #9333ea; /* Purple 600 */
-    --color-dark: #1f2937; /* Gray 800 */
-    --color-light-gray: #f9fafb; /* Gray 50 */
-    --color-medium-gray: #e5e7eb; /* Gray 200 */
-    --color-text: #374151; /* Gray 700 */
-    --color-highlight: #fde047; /* Yellow 300 */
-    --color-border: #e0e7ff; /* Indigo 200 */
-    --color-accent: #ff6f61; /* A bright accent color, common in HTML5 Up themes */
+    /* Define a new steel/navy blue color palette */
+    --color-dark: #2c3e50; /* Base background, footer, menu - Steel Blue / Dark Navy */
+    --color-light-gray: #34495e; /* Alternating section background - Slightly lighter steel blue */
+    --color-medium-gray: rgba(255, 255, 255, 0.08); /* Hover states, subtle borders */
+    --color-text: #ecf0f1; /* General text color - Light gray/off-white */
+    --color-primary: #3498db; /* Buttons, logo, primary accents - Bright Blue */
+    --color-secondary: #2980b9; /* Hover for primary, secondary accents - Slightly darker bright blue */
+    --color-highlight: #f1c40f; /* Hero highlight - Sunflower Yellow */
+    --color-border: #4a627d; /* About me image border, light separators - Lighter steel blue */
+    --color-accent: #e74c3c; /* Red for strong accents if needed (less used now) */
 
     /* Spacing scale (based on 1rem = 16px, similar to Tailwind's default) */
     --spacing-xs: 0.25rem; /* 4px */
@@ -53,8 +53,8 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
-    background-color: var(--color-light-gray);
-    color: var(--color-text);
+    background-color: var(--color-dark); /* Base background color */
+    color: var(--color-text); /* Base text color */
     line-height: 1.6; /* Default line height for readability */
     margin: 0;
     padding: 0;
@@ -85,7 +85,7 @@ a {
 
 /* --- Header --- */
 .header {
-    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    background-color: rgba(44, 62, 80, 0.95); /* Using --color-dark with opacity */
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     padding: var(--spacing-md) 0;
     position: sticky;
@@ -186,7 +186,7 @@ a {
 .menu-links a {
     display: block;
     padding: var(--spacing-md);
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(236, 240, 241, 0.8); /* Using var(--color-text) with opacity */
     font-size: var(--font-size-lg);
     font-weight: 500;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
@@ -194,7 +194,7 @@ a {
 }
 
 .menu-links a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(236, 240, 241, 0.1); /* Using var(--color-text) with opacity */
     color: #fff;
 }
 
@@ -204,7 +204,7 @@ a {
     right: var(--spacing-md);
     background: none;
     border: none;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(236, 240, 241, 0.6); /* Using var(--color-text) with opacity */
     font-size: var(--font-size-2xl);
     cursor: pointer;
     padding: var(--spacing-sm);
@@ -236,14 +236,53 @@ a {
 
 
 /* --- Banner Section (Hero) --- */
+gradient-canvas {
+  width:100%;
+  height:100%;
+  --gradient-color-1: #c3e4ff; 
+  --gradient-color-2: #6ec3f4; 
+  --gradient-color-3: #eae2ff;  
+  --gradient-color-4: #b9beff;
+}
+
 .banner-section {
-    background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+    position: relative; /* Needed for absolute positioning of canvas and content */
+    background-color: var(--color-dark); /* Fallback/base color */
     color: #fff;
     text-align: center;
     padding: var(--spacing-7xl) var(--spacing-md); /* More vertical padding */
     border-bottom-left-radius: var(--spacing-md);
     border-bottom-right-radius: var(--spacing-md);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    overflow: hidden; /* Ensure canvas doesn't overflow rounded corners */
+
+    /* Define Gradient.js colors here using CSS custom properties */
+    --gradient-color-1: #1a2b3e; /* Very dark navy */
+    --gradient-color-2: #6c7a89; /* Steel grey */
+    --gradient-color-3: #6495ed; /* Cornflower blue */
+    --gradient-color-4: #d4d48d; /* Pastel yellow */
+}
+
+.banner-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 1; /* Below content */
+}
+
+.banner-content {
+    position: relative; /* Create new stacking context for content */
+    z-index: 2; /* Above canvas */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Take full height of banner section */
+    max-width: 800px; /* Limit content width */
+    margin: 0 auto; /* Center content horizontally */
 }
 
 .banner-section h1 {
@@ -251,6 +290,7 @@ a {
     font-weight: 800;
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
+    color: #fff; /* Ensure heading is white */
 }
 
 .banner-section h1 .highlight {
@@ -261,15 +301,13 @@ a {
     font-size: var(--font-size-xl);
     margin-bottom: var(--spacing-2xl);
     opacity: 0.9;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    color: #fff; /* Ensure paragraph is white */
 }
 
 .banner-button {
     display: inline-block;
-    background-color: #fff;
-    color: var(--color-primary);
+    background-color: var(--color-primary); /* Use primary color for button */
+    color: #fff; /* White text on button */
     padding: var(--spacing-md) var(--spacing-xl);
     border-radius: 9999px; /* Fully rounded */
     font-size: var(--font-size-lg);
@@ -281,13 +319,13 @@ a {
 }
 
 .banner-button:hover {
-    background-color: var(--color-border); /* Lighter indigo */
+    background-color: var(--color-secondary); /* Hover color */
     transform: scale(1.05);
 }
 
 /* --- Main Wrapper for Content Sections --- */
 .main-wrapper {
-    background-color: #fff; /* Solid State often has a white background for main content */
+    background-color: var(--color-dark); /* Main content background now dark */
     margin: var(--spacing-3xl) auto; /* Spacing from banner/footer */
     border-radius: var(--spacing-md);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -299,7 +337,7 @@ a {
     flex-direction: column; /* Stack on small screens */
     align-items: center;
     padding: var(--spacing-6xl) var(--spacing-md);
-    border-bottom: 1px solid var(--color-medium-gray); /* Separator */
+    border-bottom: 1px solid var(--color-medium-gray); /* Separator with new color */
 }
 
 .spotlight-section:last-of-type {
@@ -310,7 +348,7 @@ a {
     width: 100%;
     max-width: 400px; /* Limit image size on larger screens */
     margin-bottom: var(--spacing-xl);
-    border-radius: var(--spacing-sm);
+    border-radius: var(--spacing-md); /* Rounded corners for image container */
     overflow: hidden;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
@@ -330,13 +368,13 @@ a {
 .spotlight-section h2 {
     font-size: var(--font-size-4xl);
     font-weight: 700;
-    color: var(--color-dark);
+    color: var(--color-text); /* Heading text color */
     margin-bottom: var(--spacing-md);
 }
 
 .spotlight-section p {
     font-size: var(--font-size-lg);
-    color: var(--color-text);
+    color: var(--color-text); /* Paragraph text color */
     margin-bottom: var(--spacing-xl);
 }
 
@@ -385,6 +423,49 @@ a {
     }
 }
 
+/* --- About Me Section Specifics (within spotlight-section) --- */
+.about-heading {
+    color: var(--color-text); /* Ensure heading is white */
+}
+
+.about-content-wrapper {
+    /* No change here, flex column on mobile, row on desktop handled by spotlight-section */
+}
+
+.profile-image-container {
+    /* No change here, handled by spotlight-section .image-container */
+}
+
+.profile-image {
+    width: var(--spacing-8xl); /* 12rem = 192px */
+    height: var(--spacing-8xl); /* 12rem = 192px */
+    border-radius: var(--spacing-md); /* Rounded corners for image */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 4px solid var(--color-border); /* Lighter steel blue padding/border */
+    object-fit: cover;
+    object-position: center;
+}
+
+.bio-text-container {
+    font-size: var(--font-size-lg);
+    line-height: 1.625;
+    color: var(--color-text); /* White text */
+    text-align: justify; /* Fully justified text */
+    max-width: 100%; /* Allow it to take up a larger portion of the screen */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bio-text-container .highlight {
+    font-weight: 600;
+    color: var(--color-primary); /* Primary accent color */
+}
+
+.bio-paragraph {
+    margin-bottom: var(--spacing-md);
+}
+
+
 /* --- Features Section (for multiple project cards) --- */
 .features-section {
     padding: var(--spacing-6xl) var(--spacing-md);
@@ -401,7 +482,7 @@ a {
 .features-section h2 {
     font-size: var(--font-size-4xl);
     font-weight: 700;
-    color: var(--color-dark);
+    color: var(--color-text); /* Heading text color */
     margin-bottom: var(--spacing-3xl);
 }
 
@@ -424,7 +505,7 @@ a {
 }
 
 .feature-item {
-    background-color: #fff;
+    background-color: var(--color-dark); /* Project card background now dark */
     border-radius: var(--spacing-sm); /* Slightly less rounded than sections */
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     overflow: hidden;
@@ -457,13 +538,13 @@ a {
 .feature-item-content h3 {
     font-size: var(--font-size-2xl);
     font-weight: 600;
-    color: var(--color-dark);
+    color: var(--color-text); /* Project title text color */
     margin-bottom: var(--spacing-md);
 }
 
 .feature-item-content p {
     font-size: var(--font-size-base);
-    color: var(--color-text);
+    color: var(--color-text); /* Project description text color */
     margin-bottom: var(--spacing-lg);
 }
 
@@ -483,20 +564,20 @@ a {
     display: inline-block; /* Ensures padding and border-radius work correctly */
 }
 
-/* Specific tech tag colors */
+/* Specific tech tag colors (adjusted to fit new theme) */
 .tech-tag.indigo {
-    background-color: var(--color-border);
-    color: var(--color-primary);
+    background-color: var(--color-border); /* Lighter steel blue background */
+    color: var(--color-primary); /* Bright blue text */
 }
 
 .tech-tag.green {
-    background-color: #d1fae5;
-    color: #065f46;
+    background-color: rgba(52, 152, 219, 0.2); /* Primary blue with opacity */
+    color: #3498db; /* Bright blue text */
 }
 
 .tech-tag.purple {
-    background-color: #ede9fe;
-    color: #5b21b6;
+    background-color: rgba(147, 51, 234, 0.2); /* Secondary purple with opacity */
+    color: #9333ea; /* Purple text */
 }
 
 .project-link-group {
@@ -529,7 +610,7 @@ a {
 /* --- Contact Section (Footer-like in Solid State) --- */
 .contact-section {
     background-color: var(--color-dark); /* Dark background for footer area */
-    color: #fff;
+    color: var(--color-text); /* White text */
     padding: var(--spacing-6xl) var(--spacing-md);
     border-top-left-radius: var(--spacing-md);
     border-top-right-radius: var(--spacing-md);
@@ -547,11 +628,9 @@ a {
     color: #fff; /* Ensure heading is white */
 }
 
-/* Removed .contact-grid and related form styles */
-
-/*.contact-info-wrapper {
-    /* No specific styles needed here as it's now the primary content container
-}*/
+.contact-info-wrapper {
+    /* No specific styles needed here as it's now the primary content container */
+}
 
 .contact-list {
     list-style: none;
@@ -568,7 +647,7 @@ a {
 .contact-list li {
     margin-bottom: var(--spacing-md); /* Keep some vertical margin for wrapping */
     font-size: var(--font-size-lg); /* Base font size for text */
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-text); /* White text for list items */
     display: flex;
     flex-direction: column; /* Stack icon and text vertically */
     align-items: center; /* Center icon and text within each list item */
@@ -598,7 +677,6 @@ a {
 .contact-list .icon.fa-phone::before { content: "\f095"; font-family: "Font Awesome 5 Free"; font-weight: 900; }
 .contact-list .icon.fa-envelope::before { content: "\f0e0"; font-family: "Font Awesome 5 Free"; font-weight: 900; }
 .contact-list .icon.fa-instagram::before { content: "\f16d"; font-family: "Font Awesome 5 Brands"; }
-.contact-list .icon.fa-linkedin::before { content: "\f08c"; font-family: "Font Awesome 5 Brands"; font-weight: 900; }
 
 
 .contact-list a {
@@ -610,7 +688,7 @@ a {
     margin: var(--spacing-3xl) 0 0 0; /* Increased top margin for separation */
     padding: 0;
     font-size: var(--font-size-sm);
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(236, 240, 241, 0.6); /* Lighter white for copyright text */
     text-align: center; /* Ensure copyright is centered */
 }
 

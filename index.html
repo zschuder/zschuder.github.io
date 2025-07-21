@@ -55,7 +55,8 @@
 
         <!-- Banner Section (Hero) -->
         <section id="banner" class="banner-section">
-            <div class="inner">
+            <canvas id="gradient-canvas" class="banner-canvas" data-js-gradient></canvas>
+            <div class="banner-content">
                 <h1>Hi, I'm <span class="highlight">Zack Schuder</span>!</h1>
                 <p>A passionate physics and data science undergraduate looking to make an impact.</p>
                 <a href="#projects" class="banner-button">View My Work</a>
@@ -227,7 +228,8 @@
     </div> <!-- End page-wrapper -->
 
     <!-- Scripts -->
-    <script src="main.js"></script>
+    <script src="main.js" type="module"></script>
+    <script src="gradient.js" type="module"></script>
 
 </body>
 </html>

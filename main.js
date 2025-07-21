@@ -1,5 +1,8 @@
 // main.js - Basic JavaScript for Solid State-like menu functionality
 
+// The Gradient.js initialization is now handled directly within gradient.js
+// via its DOMContentLoaded listener and the data-js-gradient attribute on the canvas.
+
 document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
