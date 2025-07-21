@@ -645,23 +645,25 @@ gradient-canvas {
 }
 
 .contact-list li {
-    margin-bottom: var(--spacing-md); /* Keep some vertical margin for wrapping */
-    font-size: var(--font-size-lg); /* Base font size for text */
-    color: var(--color-text); /* White text for list items */
-    display: flex;
-    flex-direction: column; /* Stack icon and text vertically */
-    align-items: center; /* Center icon and text within each list item */
-    text-align: center; /* Center text below icon */
-    position: relative;
-    padding: 0; /* Remove previous padding-left */
+    margin-bottom: var(--spacing-lg); /* Add some vertical margin between items for wrapping */
     flex-basis: auto; /* Allow items to shrink/grow based on content */
     min-width: 120px; /* Ensure a minimum width for each icon block */
 }
 
-.contact-list li.icon::before {
-    content: '';
-    position: static; /* Remove absolute positioning */
-    margin-bottom: var(--spacing-sm); /* Small gap between icon and text */
+.contact-list .contact-link {
+    display: flex; /* Use flexbox for icon and text alignment */
+    flex-direction: column; /* Stack icon and text vertically */
+    align-items: center; /* Center icon and text horizontally within the link */
+    text-align: center; /* Center text below icon */
+    color: var(--color-text); /* Inherit text color */
+    transition: color 0.3s ease-in-out;
+}
+
+.contact-list .contact-link:hover {
+    color: var(--color-primary); /* Change color on hover */
+}
+
+.contact-list .icon-circle {
     width: var(--spacing-4xl); /* Larger icon circle */
     height: var(--spacing-4xl); /* Larger icon circle */
     background-color: var(--color-primary);
@@ -669,18 +671,28 @@ gradient-canvas {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
-    font-size: var(--font-size-xl); /* Larger Font Awesome icon */
+    margin-bottom: var(--spacing-sm); /* Small gap between icon and text */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-/* Specific Font Awesome icon content and font-family for each item */
-.contact-list .icon.fa-phone::before { content: "\f095"; font-family: "Font Awesome 5 Free"; font-weight: 900; }
-.contact-list .icon.fa-envelope::before { content: "\f0e0"; font-family: "Font Awesome 5 Free"; font-weight: 900; }
-.contact-list .icon.fa-instagram::before { content: "\f16d"; font-family: "Font Awesome 5 Brands"; }
+.contact-list .contact-link:hover .icon-circle {
+    background-color: var(--color-secondary); /* Change circle color on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+}
 
+.contact-list .icon-circle i {
+    color: #fff; /* White icon color */
+    font-size: var(--font-size-xl); /* Larger Font Awesome icon */
+    transition: color 0.3s ease-in-out;
+}
 
-.contact-list a {
-    color: #fff; /* Changed to white for email and instagram links */
+.contact-list .contact-link:hover .icon-circle i {
+    color: #fff; /* Keep icon white on hover */
+}
+
+.contact-list .contact-text {
+    font-size: var(--font-size-lg); /* Base font size for text */
+    line-height: 1.2; /* Adjust line height for text below icon */
 }
 
 .copyright-list {
